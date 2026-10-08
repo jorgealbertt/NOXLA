@@ -2,7 +2,7 @@
 <html lang="es"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f3ef">
   <meta name="description" content="Juego de baño NOXLA: diseño contemporáneo para transformar tu espacio. Consulta disponibilidad por WhatsApp.">
   <meta property="og:type" content="website">
@@ -44,9 +44,9 @@
     button, a { -webkit-tap-highlight-color: transparent; }
     a { color: inherit; text-decoration: none; }
     button { color: inherit; }
-    img { display: block; max-width: 100%; }
+    img { display: block; max-width: 100%; height: auto; }
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-    .container { width: min(var(--content), calc(100% - 56px)); margin-inline: auto; }
+    .container { width: min(var(--content), calc(100% - 40px)); margin-inline: auto; }
 
     .announcement {
       min-height: 34px;
@@ -150,7 +150,7 @@
       font-weight: 400;
       letter-spacing: -.035em;
     }
-    .hero h1 { max-width: 620px; font-size: clamp(48px, 7vw, 88px); line-height: .99; }
+    .hero h1 { max-width: 620px; font-size: clamp(40px, 7vw, 88px); line-height: .99; }
     .hero h1 em { color: #d7c5a7; font-weight: 400; }
     .hero-copy { max-width: 410px; margin: 23px 0 30px; color: rgba(255,255,255,.82); font-size: 14px; line-height: 1.8; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -186,11 +186,11 @@
     .intro-inner { min-height: 96px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }
     .intro-item { display: flex; align-items: center; justify-content: center; gap: 13px; padding: 18px; }
     .intro-item + .intro-item { border-left: 1px solid #dcd8cf; }
-    .intro-icon { width: 26px; height: 26px; color: var(--olive); }
+    .intro-icon { width: 26px; height: 26px; color: var(--olive); flex-shrink: 0; }
     .intro-item strong { display: block; font-size: 11px; font-weight: 600; }
     .intro-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
 
-    .collection { padding: 106px 0 118px; }
+    .collection { padding: 80px 0 100px; }
     .section-heading {
       display: flex;
       align-items: end;
@@ -198,9 +198,10 @@
       gap: 24px;
       margin-bottom: 34px;
     }
-    .section-heading h2 { font-size: clamp(40px, 5vw, 58px); line-height: 1.05; }
-    .section-heading p:not(.eyebrow) { max-width: 390px; margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .section-heading h2 { font-size: clamp(36px, 5vw, 58px); line-height: 1.05; }
+    .section-heading p:not(.eyebrow) { max-width: 420px; margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
     .collection-count { color: var(--muted); font-size: 11px; white-space: nowrap; }
+    
     .filters {
       display: flex;
       align-items: center;
@@ -209,24 +210,41 @@
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       padding: 15px 0;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
-    .filter-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .filters::-webkit-scrollbar { display: none; }
+    .filter-list { display: flex; flex-wrap: nowrap; gap: 8px; }
     .filter-button {
       border: 1px solid transparent;
       border-radius: 99px;
-      padding: 9px 15px;
+      padding: 9px 18px;
       background: transparent;
       color: #66655f;
       cursor: pointer;
       font-size: 11px;
+      white-space: nowrap;
       transition: all .2s ease;
     }
     .filter-button:hover, .filter-button[aria-pressed="true"] { border-color: #d3cec4; background: #eae7df; color: var(--ink); }
-    .product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 38px 22px; }
+    
+    /* GRID OPTIMIZADA PARA IMÁGENES AMPLIAS */
+    .product-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, minmax(0, 1fr)); 
+      gap: 36px 24px; 
+    }
     .product-card { min-width: 0; animation: card-in .35s ease both; }
     @keyframes card-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .product-image-wrap { position: relative; overflow: hidden; background: #e4e1dc; }
+    
+    .product-image-wrap { 
+      position: relative; 
+      overflow: hidden; 
+      background: #e4e1dc; 
+      border-radius: 4px;
+    }
     .product-image {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -234,18 +252,19 @@
       cursor: zoom-in;
       transition: transform .65s cubic-bezier(.2,.65,.3,1);
     }
-    .product-card:hover .product-image { transform: scale(1.035); }
+    .product-card:hover .product-image { transform: scale(1.04); }
     .image-zoom {
       position: absolute;
       right: 12px;
       bottom: 12px;
       display: grid;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       place-items: center;
       border: 0;
       border-radius: 50%;
-      background: rgba(255,255,255,.91);
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
       cursor: zoom-in;
       opacity: 0;
       transform: translateY(4px);
@@ -254,29 +273,28 @@
     .product-card:hover .image-zoom, .image-zoom:focus-visible { opacity: 1; transform: none; }
     .product-info { padding: 16px 2px 0; }
     .product-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .product-type { color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
-    .product-price { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .product-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); padding-top: 13px; }
-    .product-detail { color: var(--muted); font-size: 10px; }
-    .text-link { display: inline-flex; align-items: center; gap: 7px; color: #373731; font-size: 10px; font-weight: 600; }
+    .product-type { color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+    .product-price { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .product-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; margin-top: 8px; }
+    .product-detail { color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .text-link { display: inline-flex; align-items: center; gap: 6px; color: #373731; font-size: 11px; font-weight: 600; white-space: nowrap; }
     .text-link svg { transition: transform .2s ease; }
     .text-link:hover svg { transform: translateX(3px); }
-    .empty-state { grid-column: 1 / -1; padding: 50px 20px; color: var(--muted); text-align: center; }
+    .empty-state { grid-column: 1 / -1; padding: 60px 20px; color: var(--muted); text-align: center; }
 
     .manifesto { position: relative; overflow: hidden; background: #292a26; color: white; }
     .manifesto-inner { min-height: 350px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; padding-block: 70px; }
-    .manifesto h2 { max-width: 570px; font-size: clamp(38px, 5.2vw, 65px); line-height: 1.08; }
+    .manifesto h2 { max-width: 570px; font-size: clamp(34px, 5.2vw, 65px); line-height: 1.08; }
     .manifesto h2 em { color: #d7c5a7; font-weight: 400; }
     .manifesto-copy { max-width: 410px; color: rgba(255,255,255,.7); font-size: 13px; line-height: 1.9; }
     .manifesto-copy p { margin: 0 0 22px; }
     .manifesto-copy .text-link { color: white; }
 
-    .contact { padding: 100px 0; text-align: center; }
+    .contact { padding: 90px 0; text-align: center; }
     .contact .eyebrow { justify-content: center; }
-    .contact h2 { max-width: 700px; margin: 0 auto; font-family: var(--serif); font-size: clamp(39px, 5vw, 61px); font-weight: 400; line-height: 1.08; }
+    .contact h2 { max-width: 700px; margin: 0 auto; font-family: var(--serif); font-size: clamp(32px, 5vw, 61px); font-weight: 400; line-height: 1.08; }
     .contact > .container > p:not(.eyebrow) { margin: 17px auto 26px; color: var(--muted); font-size: 13px; line-height: 1.7; }
-    .contact .button { min-height: 50px; padding-inline: 24px; }
-    .contact-note { margin-top: 16px; color: #89877e; font-size: 10px; }
+    .contact .button { min-height: 50px; padding-inline: 26px; }
 
     .site-footer { border-top: 1px solid var(--line); padding: 29px 0; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 10px; }
@@ -294,7 +312,7 @@
       min-height: 50px;
       border: 0;
       border-radius: 99px;
-      padding: 0 17px;
+      padding: 0 19px;
       background: #263a30;
       box-shadow: 0 8px 25px rgba(0,0,0,.18);
       color: white;
@@ -305,40 +323,55 @@
     .whatsapp-float:hover { transform: translateY(-3px); background: #314b3d; }
     .whatsapp-float svg { width: 19px; height: 19px; }
 
+    /* MODAL DE AMPLIACIÓN MEJORADO */
     dialog {
-      width: min(940px, calc(100% - 32px));
-      max-width: none;
-      max-height: min(90vh, 900px);
+      width: min(920px, calc(100% - 32px));
+      max-height: min(90vh, 850px);
       border: 0;
+      border-radius: 8px;
       padding: 0;
       background: var(--paper);
       color: var(--ink);
-      box-shadow: 0 25px 90px rgba(0,0,0,.34);
+      box-shadow: 0 25px 90px rgba(0,0,0,.35);
+      overflow: hidden;
     }
-    dialog::backdrop { background: rgba(24,24,22,.76); backdrop-filter: blur(4px); }
-    .modal-layout { display: grid; grid-template-columns: 1.3fr .7fr; }
-    .modal-image { width: 100%; height: 100%; min-height: 420px; object-fit: cover; background: #e5e2dc; }
-    .modal-copy { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 44px 34px; }
-    .modal-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; font-size: 20px; line-height: 1; }
-    .modal-copy h2 { margin: 9px 0 4px; font-family: var(--serif); font-size: 38px; font-weight: 400; }
-    .modal-description { margin: 0; color: var(--muted); font-size: 12px; }
-    .modal-price { margin: 22px 0; font-size: 22px; font-weight: 600; }
-    .modal-note { margin: 0 0 24px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+    dialog::backdrop { background: rgba(20,20,18,.82); backdrop-filter: blur(6px); }
+    .modal-layout { display: grid; grid-template-columns: 1.25fr .75fr; height: 100%; max-height: min(90vh, 850px); }
+    .modal-image-container {
+      background: #181816;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 380px;
+    }
+    .modal-image { 
+      width: 100%; 
+      height: 100%; 
+      max-height: 80vh;
+      object-fit: contain; 
+    }
+    .modal-copy { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 40px 32px; overflow-y: auto; }
+    .modal-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); cursor: pointer; font-size: 20px; line-height: 1; z-index: 2; }
+    .modal-copy h2 { margin: 8px 0 6px; font-family: var(--serif); font-size: 34px; font-weight: 400; }
+    .modal-description { margin: 0; color: var(--ink); font-size: 13px; line-height: 1.6; }
+    .modal-price { margin: 20px 0 16px; font-size: 24px; font-weight: 600; }
+    .modal-note { margin: 0 0 22px; color: var(--muted); font-size: 11px; line-height: 1.6; }
     .modal-copy .button { width: 100%; }
 
-    @media (max-width: 850px) {
-      .container { width: min(var(--content), calc(100% - 40px)); }
-      .main-nav { gap: 19px; }
-      .header-inner { gap: 18px; }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 18px; }
-      .manifesto-inner { gap: 28px; }
-      .hero-content { width: min(570px, 75%); }
+    /* RESPONSIVE PARA MOVILES Y TABLETS */
+    @media (max-width: 900px) {
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
+      .modal-layout { grid-template-columns: 1fr; }
+      .modal-image-container { height: 45vh; min-height: 280px; }
+      .modal-copy { padding: 26px 22px 24px; }
     }
+
     @media (max-width: 640px) {
-      .container { width: calc(100% - 36px); }
+      .container { width: calc(100% - 32px); }
       .announcement { min-height: 31px; font-size: 8px; letter-spacing: .12em; }
-      .header-inner { min-height: 68px; }
-      .brand-name { font-size: 21px; }
+      .header-inner { min-height: 64px; }
+      .brand-name { font-size: 20px; }
       .menu-toggle { display: inline-grid; place-items: center; margin-left: auto; }
       .header-action { min-height: 38px; padding-inline: 12px; font-size: 10px; }
       .main-nav {
@@ -355,44 +388,38 @@
       }
       .main-nav.is-open { display: flex; flex-direction: column; }
       .main-nav a { padding: 13px 0; }
-      .hero { min-height: 650px; min-height: min(760px, calc(100svh - 100px)); align-items: end; }
-      .hero-image { object-position: 54% center; }
-      .hero::after { background: linear-gradient(0deg, rgba(18,19,17,.84), rgba(18,19,17,.48) 49%, rgba(18,19,17,.05)); }
-      .hero-content { width: 100%; padding: 0 0 100px; }
-      .hero h1 { max-width: 420px; font-size: clamp(47px, 14vw, 70px); }
-      .hero-copy { max-width: 360px; font-size: 13px; }
-      .hero-meta { right: 18px; bottom: 21px; left: 18px; justify-content: space-between; font-size: 9px; }
-      .hero .container { width: calc(100% - 36px); }
+      
+      .hero { min-height: 520px; align-items: end; }
+      .hero-content { width: 100%; padding: 0 0 80px; }
+      .hero h1 { max-width: 360px; font-size: 42px; }
+      .hero-copy { font-size: 13px; }
+      .hero-meta { right: 16px; bottom: 18px; left: 16px; justify-content: space-between; font-size: 9px; }
+      
       .intro-inner { grid-template-columns: 1fr; padding: 10px 0; }
-      .intro-item { justify-content: flex-start; padding: 13px 3px; }
+      .intro-item { justify-content: flex-start; padding: 12px 0; }
       .intro-item + .intro-item { border-top: 1px solid #dcd8cf; border-left: 0; }
-      .collection { padding: 75px 0 82px; }
-      .section-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 25px; }
-      .section-heading h2 { font-size: 45px; }
-      .filters { align-items: stretch; flex-direction: column; gap: 12px; }
-      .filter-list { gap: 2px; }
-      .filter-button { padding: 9px 12px; }
-      .search-box { width: 100%; }
-      .product-grid { gap: 26px 12px; }
-      .product-info { padding-top: 12px; }
-      .product-type { font-size: 8px; }
-      .product-price { font-size: 13px; }
-      .product-actions { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .image-zoom { width: 32px; height: 32px; opacity: 1; transform: none; }
-      .manifesto-inner { min-height: 0; grid-template-columns: 1fr; gap: 23px; padding-block: 68px; }
-      .manifesto h2 { font-size: 45px; }
-      .contact { padding: 73px 0; }
-      .contact h2 { font-size: 44px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; gap: 13px; }
-      .whatsapp-float { right: 14px; bottom: 14px; width: 50px; justify-content: center; padding: 0; }
+      
+      .collection { padding: 60px 0 70px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+      
+      /* EN TELEFONOS PEQUEÑOS (<480px) 1 COLUMNA PARA IMÁGENES MÁS GRANDES Y DETALLADAS */
+      .product-grid { grid-template-columns: 1fr; gap: 32px; }
+      .product-image { aspect-ratio: 4 / 3; }
+      .image-zoom { opacity: 1; transform: none; width: 36px; height: 36px; }
+      
+      .manifesto-inner { min-height: 0; grid-template-columns: 1fr; gap: 20px; padding-block: 54px; }
+      .contact { padding: 60px 0; }
+      
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .whatsapp-float { right: 16px; bottom: 16px; width: 48px; height: 48px; min-height: 0; justify-content: center; padding: 0; }
       .whatsapp-float span { display: none; }
-      .modal-layout { grid-template-columns: 1fr; }
-      .modal-image { height: min(55vh, 390px); min-height: 0; }
-      .modal-copy { padding: 27px 24px 25px; }
-      .modal-copy h2 { font-size: 32px; }
-      .modal-price { margin: 15px 0; }
-      .modal-note { margin-bottom: 16px; }
+      
+      dialog { width: calc(100% - 24px); margin: auto; }
+      .modal-image-container { height: 40vh; }
+      .modal-copy h2 { font-size: 28px; }
+      .modal-price { margin: 12px 0 10px; font-size: 20px; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
@@ -471,13 +498,13 @@
         <header class="section-heading">
           <div>
             <p class="eyebrow">Piezas para tu espacio</p>
-            <h2>NUESTRA COLECCION</h2>
+            <h2>NUESTRA COLECCIÓN</h2>
             <p>Encuentra la armonía que buscas. Una selección que combina una estética impecable con la máxima utilidad para tus ambientes diarios.</p>
           </div>
           <span class="collection-count" id="productCount" aria-live="polite">modelos</span>
         </header>
 
-        <!-- AQUI ESTAN LOS FILTROS ACTUALIZADOS -->
+        <!-- FILTROS DESPLAZABLES EN MOVIL -->
         <div class="filters" aria-label="Filtros de productos">
           <div class="filter-list" role="group" aria-label="Filtrar por categoría">
             <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Todos</button>
@@ -512,7 +539,6 @@
         <h2>Hagamos de tu casa el lugar donde siempre quieres estar.</h2>
         <p>¿Tienes dudas sobre medidas, estilos o disponibilidad? Escríbenos.</p>
         <a class="button" href="https://wa.me/584244161756?text=Hola%20NOXLA%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">Conversar por WhatsApp</a>
-        
       </div>
     </section>
   </main>
@@ -534,21 +560,25 @@
     <span>Consulta disponibilidad</span>
   </a>
 
+  <!-- MODAL DE DETALLE -->
   <dialog id="productModal" aria-labelledby="modalTitle">
     <div class="modal-layout">
-      <img class="modal-image" id="modalImage" src="" alt="">
+      <div class="modal-image-container">
+        <img class="modal-image" id="modalImage" src="" alt="Juego de baño NOXLA ampliado">
+      </div>
       <div class="modal-copy">
         <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar ventana">×</button>
         <p class="eyebrow" id="modalType">Juego de baño</p>
         <h2 id="modalTitle">Juego de baño</h2>
         <p class="modal-description" id="modalDesc"></p>
         <div class="modal-price" id="modalPrice"></div>
-        <p class="modal-note">El precio puede estar sujeto a cambios. Consulta por WhatsApp la disponibilidad de este modelo.</p>
+        <p class="modal-note">El precio puede estar sujeto a cambios. Consulta por WhatsApp la disponibilidad de este modelo. (No incluye grifería).</p>
         <a class="button" id="modalAction" href="#" target="_blank" rel="noopener noreferrer">Solicitar por WhatsApp</a>
       </div>
     </div>
   </dialog>
-<script>
+
+  <script>
     const nav = document.getElementById("mainNav");
     const menuToggle = document.getElementById("menuToggle");
     const heroImage = document.getElementById("heroImage");
@@ -563,7 +593,6 @@
       menuToggle.setAttribute("aria-expanded", isOpen);
     });
 
-    // Imágenes del carrusel principal
     const slides = [
       "JH01L.jpg",
       "JH02.jpg",
@@ -582,14 +611,13 @@
     document.getElementById("heroPrev").addEventListener("click", () => updateSlide(-1));
     document.getElementById("heroNext").addEventListener("click", () => updateSlide(1));
 
-    // Catálogo con las rutas de imágenes y datos actualizados
     const products = [
-      { id: "M24", price: 120, image: "M24.jpg", desc: "Lacado blanco brillante · 2 puertas.", category: "juegos-de-bano" },
-      { id: "T02M", price: 120, image: "T02M.jpg", desc: "Lacado gris ocuro mate · 2 puertas.", category: "juegos-de-bano" },
-      { id: "JH01L", price: 190, image: "JH01L.jpg", desc: "Efecto mármol blanco veteado · Lavabo integrado.", category: "juegos-de-bano" },
-      { id: "JH02", price: 190, image: "JH02.jpg", desc: "Efecto mármol Calacatta oro · Lavabo integrado.", category: "juegos-de-bano" },
-      { id: "JH25", price: 190, image: "JH25.jpg", desc: "Efecto mármol gris piedra · Lavabo integrado.", category: "juegos-de-bano" },
-      { id: "JH82", price: 190, image: "JH82.jpg", desc: "Efecto mármol negro Marquina · Lavabo integrado.", category: "juegos-de-bano" }
+      { id: "M24", price: 120, image: "M24.jpg", desc: "Lacado blanco brillante · 2 puertas · NO INCLUYE GRIFERÍA.", category: "juegos-de-bano" },
+      { id: "T02M", price: 120, image: "T02M.jpg", desc: "Lacado gris oscuro mate · 2 puertas · NO INCLUYE GRIFERÍA.", category: "juegos-de-bano" },
+      { id: "JH01L", price: 190, image: "JH01L.jpg", desc: "Efecto mármol blanco veteado · Lavabo integrado · NO INCLUYE GRIFERÍA.", category: "juegos-de-bano" },
+      { id: "JH02", price: 190, image: "JH02.jpg", desc: "Efecto mármol Calacatta oro · Lavabo integrado · NO INCLUYE GRIFERÍA.", category: "juegos-de-bano" },
+      { id: "JH25", price: 190, image: "JH25.jpg", desc: "Efecto mármol gris piedra · Lavabo integrado · NO INCLUYE GRIFERÍA.", category: "juegos-de-bano" },
+      { id: "JH82", price: 190, image: "JH82.jpg", desc: "Efecto mármol negro Marquina · Lavabo integrado · NO INCLUYE GRIFERÍA.", category: "juegos-de-bano" }
     ];
 
     let activeFilter = "all";
@@ -611,8 +639,8 @@
         <div class="product-card" role="listitem" style="animation-delay: ${index * 0.05}s">
           <div class="product-image-wrap">
             <img class="product-image" src="${p.image}" alt="Juego de baño NOXLA" loading="lazy" onclick="openModal('${p.id}')">
-            <button class="image-zoom" type="button" aria-label="Ver imagen del juego de baño" onclick="openModal('${p.id}')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path><path d="M10 7v6m-3-3h6"></path></svg>
+            <button class="image-zoom" type="button" aria-label="Ver imagen ampliada" onclick="openModal('${p.id}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path><path d="M10 7v6m-3-3h6"></path></svg>
             </button>
           </div>
           <div class="product-info">
